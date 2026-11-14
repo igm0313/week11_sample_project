@@ -1,3 +1,19 @@
+Project Structure: 주요 파일 3개의 역할
+Component & Props: CourseList와 CourseItem의 관계 및 Props 전달 방식
+State & Event: useState를 이용한 상태 관리 및 삭제 버튼의 동작 원리
+Code Analysis: 주요 코드 2개(각 5~15줄)를 선택하여 동작 원리 설명
+
+초기 과목 데이터를 자신이 선택한 과목 5개 이상으로 변경
+ERC와 Computer Structure, Bio Chemistry로 변경
+
+프로젝트 제목 및 설명 변경
+App.jsx에서 제목을 학번과 이름으로 변경
+
+CSS 스타일 3곳 이상 변경
+subtitle font-size : 15px -> 20px로 변경 
+.topline color : green으로 변경
+.stat 과 panel의 background-color : #4568b4로 변경
+
 # OSS Week 11 — React Course Manager (Student Starter)
 
 React + Vite 기반 학생 배포용 Sample Project입니다. **조회와 삭제는 완성**, 등록 및 완료 변경은 학생이 직접 구현하도록 `TODO`로 남겨두었습니다.

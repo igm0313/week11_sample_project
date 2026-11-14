@@ -2,7 +2,7 @@
 export const initialCourses = [
   { id: 1, name: 'Open Source Studio', category: 'Major', completed: false },
   { id: 2, name: 'Programming Studio', category: 'Major', completed: true },
-  { id: 3, name: 'Coding Studio', category: 'Elective', completed: false },
-  { id: 4, name: 'Web Service Development', category: 'Major', completed: false },
-  { id: 5, name: 'Software Engineering', category: 'Elective', completed: true },
+  { id: 3, name: 'ERC', category: 'English', completed: false },
+  { id: 4, name: 'Computer Structure', category: 'Major', completed: false },
+  { id: 5, name: 'Bio Chemistry', category: 'Major', completed: true },
 ];

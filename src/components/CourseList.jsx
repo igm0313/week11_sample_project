@@ -16,12 +16,26 @@ export default function CourseList() {
   // TODO 1 (필수): 과목 추가 기능을 구현하세요.
   function handleAdd(event) {
     event.preventDefault();
+
+    if(newName=='') {
+      alert("새 과목을 입력하세요.");
+      return;
+    }
+
+    const course = {id :courses.length+1 , name: newName, category:"major", completed: false};
+    setCourses(courses => [...courses,course]);
+
+    
+    setNewName(newName => newName ='');
     // TODO: 빈 입력 검사, 새 과목 객체 생성, setCourses 호출, 입력창 초기화
   }
 
   // TODO 2 (필수): 완료 상태 변경 기능을 구현하세요.
   function handleToggle(id) {
     // TODO: map과 spread(...)를 사용하여 해당 id의 completed를 반전
+    const items = courses.map(course => (course.id == id)? {...course, completed : !course.completed}  : course);
+    
+    setCourses(courses => items);
   }
 
   const doneCount = courses.filter(course => course.completed).length;
