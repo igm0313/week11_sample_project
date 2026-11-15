@@ -13,6 +13,7 @@ CSS 스타일 3곳 이상 변경
 subtitle font-size : 15px -> 20px로 변경 
 .topline color : green으로 변경
 .stat 과 panel의 background-color : #4568b4로 변경
+.list-head의 grid-template-columns: 1fr 205px 60px로 변경   
 
 # OSS Week 11 — React Course Manager (Student Starter)
 

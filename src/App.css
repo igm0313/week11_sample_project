@@ -78,6 +78,11 @@ body {
     box-shadow: 0 3px 12px #273d5a05
 }
 
+.stat:hover {
+    background: #ffe;
+    transform: translateY(-10px);
+}
+
 .stat span {
     font-size: 13px;
     color: #788397
@@ -207,7 +212,7 @@ body {
 
 .list-head {
     display: grid;
-    grid-template-columns: 1fr 115px 145px;
+    grid-template-columns: 1fr 205px 60px;
     gap: 12px;
     color: #8a94a4;
     text-transform: uppercase;

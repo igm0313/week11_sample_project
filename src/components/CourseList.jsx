@@ -6,6 +6,7 @@ export default function CourseList() {
   // [제공] 초기 배열을 useState로 관리합니다.
   const [courses, setCourses] = useState(initialCourses);
   const [newName, setNewName] = useState('');
+  const [newStat, setStat] = useState('every');
 
   // [제공] 삭제 기능: filter로 새 배열을 만들어 업데이트합니다.
   function handleDelete(id) {
@@ -43,9 +44,9 @@ export default function CourseList() {
   return (
     <>
       <section className="stats" aria-label="과목 통계">
-        <div className="stat"><span>전체 과목</span><strong>{courses.length}</strong></div>
-        <div className="stat"><span>완료</span><strong className="green">{doneCount}</strong></div>
-        <div className="stat"><span>진행 중</span><strong className="blue">{courses.length - doneCount}</strong></div>
+        <div className="stat" onClick={() => setStat(newStat=>'every')}><span>전체 과목</span><strong>{courses.length}</strong></div>
+        <div className="stat" onClick={() => setStat(newStat=>'complete')}><span>완료</span><strong className="green">{doneCount}</strong></div>
+        <div className="stat" onClick={() => setStat(newStat=>'before')}><span>진행 중</span><strong className="blue">{courses.length - doneCount}</strong></div>
       </section>
       <section className="panel">
         <div className="panel-header"><h2>My Courses</h2><span className="small-note">{courses.length} courses</span></div>
@@ -56,7 +57,13 @@ export default function CourseList() {
         </form>
         <div className="list-head"><span>COURSE</span><span>CATEGORY</span><span>ACTIONS</span></div>
         {courses.length === 0 && <div className="empty">등록된 과목이 없습니다.</div>}
-        {courses.map(course => (
+        {newStat == 'complete' && courses.filter(course => course.completed).map(course => (
+          <CourseItem key={course.id} course={course} onDelete={handleDelete} onToggle={handleToggle} />
+        ))}
+        {newStat == 'before' && courses.filter(course => !course.completed).map(course => (
+          <CourseItem key={course.id} course={course} onDelete={handleDelete} onToggle={handleToggle} />
+        ))}
+        {newStat == 'every' && courses.map(course => (
           <CourseItem key={course.id} course={course} onDelete={handleDelete} onToggle={handleToggle} />
         ))}
       </section>
