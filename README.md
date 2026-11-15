@@ -68,14 +68,23 @@ setCourses(courses => [...courses,course]);
 const items = courses.map(course => (course.id == id)? {...course, completed : !course.completed}  : {...course});
 
 {newStat == 'complete' && courses.filter(course => course.completed).map(course => (
-          <CourseItem key={course.id} course={course} onDelete={handleDelete} onToggle={handleToggle} />
+<CourseItem key={course.id} course={course} onDelete={handleDelete} onToggle={handleToggle} />
 
 Deployment: 실제 접근 가능한 Vercel URL
+https://vercel.com/a-34be/week11-sample-project
+https://week11-sample-project-rouge.vercel.app/
 
 Weekly Review:
 새롭게 배운 내용 3가지
+map에서 삼항 연산자를 통해 특정 조건만 바꿀 수 있는 방법을 배웠다.
+condition && html을 활용해 상황에 맞는 html을 렌더링 하는 방법을 배웠다.
+useState를 통한 새로운 값들을 setState로 바꾸는 방법에 대해 배웠다.
+
 어려웠던 점과 해결 방법
+map의 삼항연산자에서 complete만 변경할 시 complete값만 나와서 곤란했다. 방법은 ...course를 사용해 object자체를 받아 complete만 변경하면 됐다.
+
 AI 활용 내용 및 느낀 점
+condition && html 이 이해되지 않아서 AI를 사용하여 물어봤다. and의 특성을 이용한 문법이었는데, condition이 true라면 오른쪽 html이 실행되고(읽어야하니까) false라면 읽을필요가 없으니까 오른쪽 html이 실행되지 않는다. 신기했다.
 
 # OSS Week 11 — React Course Manager (Student Starter)
 
