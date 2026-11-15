@@ -1,7 +1,37 @@
 Project Structure: 주요 파일 3개의 역할
+    CourseList.jsx - 웹페이지의 기본 html과 component들이 세팅되어있고 CourseItem을 불러서 사용함.
+    CourseItem.jsx - courses의 내용을 웹페이지에 보여주는 역할을 함.
+    App.css - 위 두개의 스타일을 꾸며줌.
+
 Component & Props: CourseList와 CourseItem의 관계 및 Props 전달 방식
+CourseList에서 CourseItem이 사용할 함수를 만들어 map으로 각 course를 부르면서 넘겨준다.
+
 State & Event: useState를 이용한 상태 관리 및 삭제 버튼의 동작 원리
+previous(가장 최신 상태)를 받아서 해당 id를 제외하는 필터를 사용하여 삭제시킨다.
+업데이트는 ...courses를 활용해서 뒤에 새로운 인자 하나를 추가한다. 
+체크박스를 클릭하면 해당 id의 complete가 반전되게 만들었다.
+
 Code Analysis: 주요 코드 2개(각 5~15줄)를 선택하여 동작 원리 설명
+  function handleToggle(id) {
+    // TODO: map과 spread(...)를 사용하여 해당 id의 completed를 반전
+    const items = courses.map(course => (course.id == id)? {...course, completed : !course.completed}  : {...course}); 
+    
+    setCourses(courses => items);
+  }
+  삼항연산자를 이용해서 특정 id의 complete를 반전한다. map을 사용했으므로 object에 접근하기 위해 {...course, complete}를 사용함으로 complete 값만 변경하며 다른 값들도 가져왔다.
+
+{newStat == 'complete' && courses.filter(course => course.completed).map(course => (
+          <CourseItem key={course.id} course={course} onDelete={handleDelete} onToggle={handleToggle} />
+    ))}
+{newStat == 'before' && courses.filter(course => !course.completed).map(course => (
+          <CourseItem key={course.id} course={course} onDelete={handleDelete} onToggle={handleToggle} />
+    ))}
+{newStat == 'every' && courses.map(course => (
+          <CourseItem key={course.id} course={course} onDelete={handleDelete} onToggle={handleToggle} />
+    ))}
+
+    newStat이라는 새로운 useState를 만들어서 화면 표시 방법을 바꾸었다. 위 card를 클릭하면 newStat이 바뀌고 해당하는
+    newStat 상태에서 보여주는 화면을 filter을 사용해서 다르게 만들었다.
 
 초기 과목 데이터를 자신이 선택한 과목 5개 이상으로 변경
 ERC와 Computer Structure, Bio Chemistry로 변경
@@ -14,6 +44,38 @@ subtitle font-size : 15px -> 20px로 변경
 .topline color : green으로 변경
 .stat 과 panel의 background-color : #4568b4로 변경
 .list-head의 grid-template-columns: 1fr 205px 60px로 변경   
+.stat:hover 추가
+
+Project Information: 프로젝트 소개, 주요 기능 및 원본 Sample Project URL
+스케쥴을 관리할 수 있는 todo program. CURD가 주요기능이다.
+https://github.com/2026-2-OSS/week11_sample_project
+
+Installation: 설치·실행 방법 및 실행 화면
+npm install 후 npm run dev
+
+Customizing: 수정한 데이터, 텍스트, 스타일 및 파일명
+위에 기록되어있음.
+
+Source Code Exploration: 주요 파일 3개, Component와 Props 관계, useState 및 Event 분석, 주요 코드 2개 설명
+위에 기록되어있음.
+
+Feature Extension: 구현한 기능 2개 이상, 주요 코드 및 동작 결과
+update, toggle, 완료 미완료 필터링 기능 구현.
+
+const course = {id :courses.length+1 , name: newName, category:"major", completed: false};
+setCourses(courses => [...courses,course]);
+
+const items = courses.map(course => (course.id == id)? {...course, completed : !course.completed}  : {...course});
+
+{newStat == 'complete' && courses.filter(course => course.completed).map(course => (
+          <CourseItem key={course.id} course={course} onDelete={handleDelete} onToggle={handleToggle} />
+
+Deployment: 실제 접근 가능한 Vercel URL
+
+Weekly Review:
+새롭게 배운 내용 3가지
+어려웠던 점과 해결 방법
+AI 활용 내용 및 느낀 점
 
 # OSS Week 11 — React Course Manager (Student Starter)
 
